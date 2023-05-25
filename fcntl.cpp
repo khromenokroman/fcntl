@@ -35,10 +35,10 @@ void writeFile(int fd, char *buf, size_t data_write, int buffer_size)
 int main()
 {
     size_t buffer_size = 4096;
-    size_t data_write = 4096;
+    size_t data_write = 100;
     std::unique_ptr<char[]> buf(new char[buffer_size]);
 
-    std::string str = "Helasdasdasfasdsfdfaafgdfgfasfgfbasgslkjbhjerakbnsdfkmcveankjgdvnlckas;dfmkvanjkb hgrdjfnv.kmclakdjfkgsbnj,dkv.mszlvln jfsk,gnmvb;cwledfvscdfbvclo\n";
+    std::string str = "Helasdasdasfasdsfdfaafgdfgfasfgfbasgslkjbhjerakbnsdfkmcveankjgdvnlckas;dfmkvanjkb hgrdjfnv.kmclakdjfkgsbnj,dkv.mszlvln jfsk,gnmvb;cwledfvscdfbvclo";
 
     for (int i = 0; i < str.length(); i++)
     {
@@ -54,12 +54,12 @@ int main()
         std::cout << "fd: " << fd1 << std::endl;
         std::cout << "lseek: " << lseek(fd1,0,SEEK_END) << std::endl;
 
-        writeFile(fd1, buf.get(), data_write, buffer_size);
+        writeFile(fd1, buf.get(), 30, 30);
         std::cout << "lseek: " << lseek(fd1,0,SEEK_END) << std::endl;
 
 
         int fd2 = open("data.txt", O_RDWR | O_CREAT | O_APPEND, 0777);
-        writeFile(fd1, buf.get(), data_write, buffer_size);
+        writeFile(fd1, buf.get(), 30, 10);
         std::cout << "fd: " << fd1 << std::endl;
         std::cout << "lseek: " << lseek(fd2,0,SEEK_END) << std::endl;
 
