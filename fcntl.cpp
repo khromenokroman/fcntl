@@ -16,7 +16,7 @@ private:
 
 void writeFile(int fd, char *buf, size_t data_write, int buffer_size)
 {
-    long count = 10;
+    long count = 10000000000;
     int temp = data_write;
     while (count != 0)
     {
@@ -53,8 +53,8 @@ int main()
     std::unique_ptr<char[]> buf(new char[buffer_size]);
     std::unique_ptr<char[]> buf2(new char[buffer_size]);
 
-    std::string str = "[WARN] HACK ATEMPT: 123.123.123.123 port 80 (connection refused)\n";
-    std::string str2 = "[ACESS] INPUT: 12.113.13.100 port 80 (connection OK)\n";
+    std::string str = "[FORWARD] NAT: 8.8.8.8 port 80 -> 192.168.15.100 (connection refused)\n";
+    std::string str2 = "[FORWARD] NAT: 8.8.4.4 port 443 -> 192.168.200.50 (connection OK)\n";
 
     for (int i = 0; i < str.length(); i++)
     {
